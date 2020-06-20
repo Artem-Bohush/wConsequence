@@ -1,14 +1,12 @@
-
-if( typeof module !== 'undefined' )
 require( 'wConsequence' );
-var _ = wTools;
-var con = new wConsequence();
+let _ = wTools;
 
-con.got( function( err,data )
+let con = new _.Consequence();
+
+// .finallyGive() unlike .finally() should not return anything
+con.finallyGive( ( err, arg ) =>
 {
-
-  console.log( 'got :',data );
-
-});
-
-con.give( 'some data' );
+  if( err ) console.log( err );
+  console.log( 'Got :', arg )
+} );
+con.take( 'Some arg' );
